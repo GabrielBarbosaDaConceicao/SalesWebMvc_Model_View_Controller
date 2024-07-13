@@ -4,4 +4,12 @@
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>Professor @ViewData["Professor"]</p>
+
+<address>
+    <strong>More information: </strong> <a href="https://devsuperior.com.br">Educandoweb.com.br</a>
+</address>
+
+<div class="form-group">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+</div>
