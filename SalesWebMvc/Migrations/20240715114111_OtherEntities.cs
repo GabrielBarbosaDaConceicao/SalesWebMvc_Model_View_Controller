@@ -24,9 +24,9 @@ namespace SalesWebMvc.Migrations
                 {
                     table.PrimaryKey("PK_Seller", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Seller_Departments_DepartmentId",
+                        name: "FK_Seller_Department_DepartmentId",
                         column: x => x.DepartmentId,
-                        principalTable: "Departments",
+                        principalTable: "Department",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });

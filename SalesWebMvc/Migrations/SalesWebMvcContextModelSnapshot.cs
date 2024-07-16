@@ -26,7 +26,7 @@ namespace SalesWebMvc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Department");
                 });
 
             modelBuilder.Entity("SalesWebMvc.Models.SalesRecord", b =>
