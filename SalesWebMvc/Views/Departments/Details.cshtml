@@ -9,16 +9,20 @@
 <div>
     <h4>Department</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    
+    <div>
+        <b>
             @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+        </b>
+        &nbsp;&nbsp;
+
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <a asp-controller="Departments" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-xs">Edit</a> |
+        <a asp-controller="Departments" asp-action="Index" class="btn btn-success btn-xs">Back To List</a>
+    </div>
 </div>

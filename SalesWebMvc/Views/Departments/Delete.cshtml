@@ -10,18 +10,20 @@
 <div>
     <h4>Department</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <div>
+        <b>
             @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
+        </b>
+        &nbsp;&nbsp;
+
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <br />
+
+    <form asp-controller="Departments" asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a class="btn btn-primary" asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger btn-xs" /> |
+        <a asp-controller="Departments" asp-action="Index" class="btn btn-success btn-xs">Back To List</a>
     </form>
 </div>

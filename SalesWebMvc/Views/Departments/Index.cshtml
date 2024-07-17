@@ -7,8 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    <a class="btn btn-warning" asp-action="Create">Create New</a>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+    <a asp-controller="Departments" asp-action="Create" class="btn btn-primary btn-xs">Create New Department</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-success btn-xs">Back To Home</a>
 </p>
 <table class="table">
     <thead>
@@ -27,9 +27,9 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-controller="Departments" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-xs">Edit</a> |
+                    <a asp-controller="Departments" asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning btn-xs">Details</a> |
+                    <a asp-controller="Departments" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-xs">Delete</a>
                 </td>
             </tr>
         }
