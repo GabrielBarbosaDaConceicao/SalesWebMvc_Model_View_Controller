@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Models;
+using SalesWebMvc.Models.ViewModels;
 using SalesWebMvc.Services;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,12 @@ namespace SalesWebMvc.Controllers
     public class SellersController : Controller
     {
         private readonly SellerService _sellerService;
+        private readonly DepartmentService _departmentService;
 
-        public SellersController(SellerService sellerService)
+        public SellersController(SellerService sellerService, DepartmentService departmentService)
         {
             _sellerService = sellerService ?? throw new ArgumentNullException(nameof(sellerService));
+            _departmentService = departmentService ?? throw new ArgumentNullException(nameof(departmentService));
         }
 
         [HttpGet]
@@ -26,7 +29,13 @@ namespace SalesWebMvc.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            var departments = _departmentService.FingAll();
+            var viewModel = new SellerFormViewModel
+            {
+                Departments = departments
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
