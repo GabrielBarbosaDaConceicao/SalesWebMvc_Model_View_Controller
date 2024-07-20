@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using SalesWebMvc.Models;
 using SalesWebMvc.Models.ViewModels;
 using SalesWebMvc.Services;
+using SalesWebMvc.Services.Exceptions;
 using System;
 using System.Collections.Generic;
 
@@ -94,6 +96,54 @@ namespace SalesWebMvc.Controllers
             }
 
             return View(seller);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            if (id is null)
+            {
+                return NotFound();
+            }
+
+            var seller = _sellerService.FindById(id.Value);
+
+            if (seller is null)
+            {
+                return NotFound();
+            }
+
+            List<Department> departments = _departmentService.FingAll();
+            SellerFormViewModel viewModel = new SellerFormViewModel() 
+            { 
+                Seller = seller,
+                Departments = departments 
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int? id, Seller seller)
+        {
+            if (id != seller.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _sellerService.Update(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException)
+            {
+                return BadRequest();
+            }
         }
 
     }
