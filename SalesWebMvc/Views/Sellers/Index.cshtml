@@ -19,6 +19,7 @@
                 <th>Email</th>
                 <th>BirthDate</th>
                 <th>BaseSalary</th>
+                <th>Department</th>
                 <th></th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
                     <td>@seller.Email</td>
                     <td>@seller.BirthDate.ToString("dd/MM/yyyy")</td>
                     <td>@seller.BaseSalary.ToString("F2")</td>
+                    <td>@seller.Department.Name</td>
                     <td>
                         <a asp-controller="Sellers" asp-action="Edit" asp-route-id="@seller.Id" class="btn btn-primary btn-xs">Edit</a> |
                         <a asp-controller="Sellers" asp-action="Details" asp-route-id="@seller.Id" class="btn btn-warning btn-xs">Details</a> |
