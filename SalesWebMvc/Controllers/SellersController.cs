@@ -52,7 +52,9 @@ namespace SalesWebMvc.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return BadRequest(ModelState);
+            var departments = _departmentService.FingAll();
+            var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -127,6 +129,12 @@ namespace SalesWebMvc.Controllers
         [HttpPost]
         public IActionResult Edit(int? id, Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FingAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
             if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch found" });
